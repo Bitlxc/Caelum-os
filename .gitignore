@@ -1,0 +1,38 @@
+# Rust build artifacts
+/target
+**/target
+/build
+
+# QEMU / image build artifacts
+*.img
+*.iso
+*.raw
+*.qcow2
+
+# Serial logs and transient diagnostics
+*.log
+serial*.txt
+serial*.log
+
+# Regenerable debug dumps (disassembly, crash dumps, core files)
+/kernel.dis.*.txt
+*.dmp
+/core
+/core.*
+
+# Downloaded firmware copies (not redistributed in the repository)
+/tools/ovmf/*.fd
+/tools/ovmf/*.bin
+
+# Editor and OS temporary files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Local scratch directories
+/local/
+/tmp/

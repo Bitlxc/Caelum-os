@@ -1,0 +1,33 @@
+[package]
+name = "kernel"
+version = "0.16.0"
+edition = "2024"
+description = "CaelumOS kernel (M7b): the M5 storage/file/mapping stages, M6a1/M6a2 IPC, M6b1/M6b2a bring-up, M6b2 SMP workloads, M6c display/input and M7a loopback self-test stay as regression, and M7b wires the native socket calls (NR44-53) to the real network engine with Socket/NetNamespace objects and runs the user-mode net service on an application processor"
+license = "MIT OR Apache-2.0"
+publish = false
+build = "build.rs"
+
+[lib]
+name = "caelum_kernel"
+path = "src/lib.rs"
+test = true
+
+[[bin]]
+name = "kernel"
+path = "src/main.rs"
+test = false
+bench = false
+
+[dependencies]
+bootinfo = { path = "../libs/bootinfo" }
+elf64 = { path = "../libs/elf64" }
+native-abi = { path = "../libs/native-abi" }
+block = { path = "../libs/block" }
+fat32 = { path = "../libs/fat32" }
+ext2 = { path = "../libs/ext2" }
+netcore = { path = "../libs/netcore" }
+
+[dev-dependencies]
+# Host regressions mount the real filesystems on the in-memory `MemDisk`
+# (feature `test-support` pulls `std` in; never enabled in the bare-metal build).
+block = { path = "../libs/block", features = ["test-support"] }

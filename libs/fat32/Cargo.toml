@@ -1,0 +1,13 @@
+[package]
+name = "fat32"
+version = "0.1.0"
+edition = "2024"
+description = "FAT32 read/write filesystem for CaelumOS (M5b): 8.3 names, mirrored FATs, no_std"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[dependencies]
+block = { path = "../block" }
+
+[dev-dependencies]
+block = { path = "../block", features = ["test-support"] }

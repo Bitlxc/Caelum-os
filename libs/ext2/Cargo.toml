@@ -1,0 +1,13 @@
+[package]
+name = "ext2"
+version = "0.1.0"
+edition = "2024"
+description = "Minimal ext2 (rev 1, 1 KiB blocks, 256-byte inodes) filesystem for CaelumOS (no_std, host-testable)"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[dependencies]
+block = { path = "../block" }
+
+[dev-dependencies]
+block = { path = "../block", features = ["test-support"] }

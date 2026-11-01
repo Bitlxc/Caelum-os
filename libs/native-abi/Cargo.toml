@@ -1,0 +1,7 @@
+[package]
+name = "native-abi"
+version = "0.2.0"
+edition = "2024"
+description = "CaelumOS native syscall ABI (M4): syscall numbers, status codes, capability handles and repr(C) request layouts (no_std, host-testable)"
+license = "MIT OR Apache-2.0"
+publish = false

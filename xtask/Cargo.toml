@@ -1,0 +1,25 @@
+[package]
+name = "xtask"
+version = "0.1.0"
+edition = "2024"
+description = "CaelumOS build automation: build/check/image/qemu/test plus a pure-Rust FAT16 ESP image generator"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[[bin]]
+name = "xtask"
+path = "src/main.rs"
+
+[dependencies]
+elf64 = { path = "../libs/elf64" }
+# Host side of the M5b two-boot acceptance run: it formats the raw disks the
+# guest writes and re-mounts them afterwards with the very same filesystem code
+# the kernel links. `test-support` exposes the in-memory block device.
+block = { path = "../libs/block", features = ["test-support"] }
+fat32 = { path = "../libs/fat32" }
+ext2 = { path = "../libs/ext2" }
+
+[dev-dependencies]
+# The kernel-side container parser. Only used by tests, to prove that the
+# bytes `xtask image` writes are exactly what the kernel will read.
+bootinfo = { path = "../libs/bootinfo" }

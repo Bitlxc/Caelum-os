@@ -1,0 +1,18 @@
+[package]
+name = "caelum-gfx"
+version = "0.1.0"
+edition = "2024"
+description = "CaelumOS M6c gfx: draws into the display RAM shadow and drains the input queue"
+license = "MIT OR Apache-2.0"
+publish = false
+build = "build.rs"
+
+[[bin]]
+name = "caelum-gfx"
+path = "src/main.rs"
+test = false
+bench = false
+
+[dependencies]
+native-abi = { path = "../../libs/native-abi" }
+native-rt = { path = "../../libs/native-rt" }

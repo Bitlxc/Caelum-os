@@ -1,0 +1,14 @@
+[package]
+name = "caelum-interp"
+version = "0.1.0"
+edition = "2024"
+description = "CaelumOS M9d1 custom PT_INTERP interpreter (no libc, raw syscalls)"
+license = "MIT OR Apache-2.0"
+publish = false
+build = "build.rs"
+
+[[bin]]
+name = "caelum-interp"
+path = "src/main.rs"
+test = false
+bench = false

@@ -1,0 +1,17 @@
+[package]
+name = "loader"
+version = "0.1.0"
+edition = "2024"
+description = "CaelumOS UEFI loader (M1): loads KERNEL.ELF from ESP, builds BootInfo and initial page tables"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[[bin]]
+name = "loader"
+path = "src/main.rs"
+test = false
+bench = false
+
+[dependencies]
+bootinfo = { path = "../libs/bootinfo" }
+elf64 = { path = "../libs/elf64" }

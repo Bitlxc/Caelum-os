@@ -1,0 +1,14 @@
+[package]
+name = "caelum-linux-dyn"
+version = "0.1.0"
+edition = "2024"
+description = "CaelumOS M9d1 dynamic main program (ET_DYN PIE + PT_INTERP, no libc)"
+license = "MIT OR Apache-2.0"
+publish = false
+build = "build.rs"
+
+[[bin]]
+name = "caelum-linux-dyn"
+path = "src/main.rs"
+test = false
+bench = false

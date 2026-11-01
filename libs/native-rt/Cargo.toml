@@ -1,0 +1,10 @@
+[package]
+name = "native-rt"
+version = "0.2.0"
+edition = "2024"
+description = "CaelumOS user-mode syscall runtime (no_std): the hardware `syscall` entry and typed wrappers for the native ABI"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[dependencies]
+native-abi = { path = "../native-abi" }

@@ -1,0 +1,39 @@
+[workspace]
+resolver = "2"
+members = [
+    "libs/block",
+    "libs/bootinfo",
+    "libs/elf64",
+    "libs/ext2",
+    "libs/fat32",
+    "libs/native-abi",
+    "libs/native-rt",
+    "libs/netcore",
+    "loader",
+    "kernel",
+    "services/init",
+    "services/child",
+    "services/worker",
+    "services/gfx",
+    "services/net",
+    "services/linux-net",
+    "services/linux-dyn",
+    "services/linux-interp",
+    "services/linux-vdso",
+    "services/linux-m9e-lib",
+    "services/linux-m9f-a",
+    "services/linux-m9f-b",
+    "xtask",
+]
+# Host-safe crates only: the native ABI crate has host unit tests, while the
+# user-mode runtime and the user programs are freestanding (x86_64-unknown-none).
+default-members = ["libs/bootinfo", "libs/elf64", "libs/native-abi", "xtask"]
+
+[profile.dev]
+# Keep debug info small for kernel/loader images.
+debug = true
+lto = false
+
+[profile.release]
+lto = true
+codegen-units = 1

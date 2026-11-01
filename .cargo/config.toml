@@ -1,0 +1,17 @@
+# CaelumOS workspace cargo configuration.
+#
+# The kernel and loader are freestanding targets; they are built per-package
+# with explicit targets by `cargo xtask build` (see xtask/src/main.rs) or by
+# `cargo build -p <pkg> --target <target>` directly.
+#
+# `default-members` keeps bare `cargo check` / `cargo test` at the workspace
+# root limited to host-safe crates (pure logic + host unit tests).
+
+[alias]
+xtask = "run --package xtask --"
+
+[target.x86_64-unknown-none]
+# The kernel is a fixed-address ET_EXEC image (see kernel/kernel.ld).
+# `-C no-redzone`: M2 installs IDT/IST exception stacks; the 128-byte red zone
+# below RSP would be silently clobbered by a stack switch to an IST stack.
+rustflags = ["-C", "relocation-model=static", "-C", "no-redzone"]
